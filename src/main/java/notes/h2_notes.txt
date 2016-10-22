@@ -19,4 +19,11 @@ select * from abc
 
 
 
+-------------
+#Modyfikacje bazy:
+#Zmiana nazwy kolumny:
+alter table abc alter column oldname rename to newname
+
+
+
 

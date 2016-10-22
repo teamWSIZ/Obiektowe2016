@@ -14,7 +14,7 @@ public class DbStart {
         Connection conn = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/nowabaza", "sa", "");
 
         //dodanie rzędu do tabeli `abc`
-        PreparedStatement st1 = conn.prepareStatement("insert into abc (nazwa) values (?)");
+        PreparedStatement st1 = conn.prepareStatement("insert into abc (name) values (?)");
         st1.setString(1, "AbcX");
         st1.executeUpdate();
 
@@ -23,7 +23,7 @@ public class DbStart {
         PreparedStatement st = conn.prepareStatement("select * from abc");
         ResultSet rs = st.executeQuery();
         while (rs.next()) {
-            String name = rs.getString("nazwa");
+            String name = rs.getString("name");
             System.out.println(name);
         }
 
