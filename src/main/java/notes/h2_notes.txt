@@ -1,0 +1,22 @@
+
+#Tworzenie tabel
+
+create table abc(
+  id int auto_increment,
+  nazwa text
+)
+
+
+
+#Dodawanie danych
+insert into abc(nazwa) values ('Abra');
+
+
+
+#Odpytywanie bazy o dane
+
+select * from abc
+
+
+
+
