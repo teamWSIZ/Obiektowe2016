@@ -19,7 +19,7 @@ public class DbStart {
             String name = rs.getString("nazwa");
             System.out.println(name);
         }
-        // add application code here
+        // tutaj kod działający na bazie
         conn.close();
 
     }
