@@ -24,7 +24,11 @@ public class DbStart {
 //        bookDAO.insertNew(new Book(0,"Harry Potter and the Sorcerer's Stone", "Rowling"));
 
 
-        List<Book> books = bookDAO.findByAuthor("Rowling");
+        Book doUpdate = new Book(34, "Ferdydurke", "Gombrowicz");
+//        bookDAO.delete(37);
+        bookDAO.update(doUpdate);
+
+        List<Book> books = bookDAO.findAll();
         for(Book b : books) {
             System.out.println(b);
         }

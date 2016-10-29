@@ -23,6 +23,9 @@ delete from book
 delete from book where title='Ferdydurke'
 
 
+#Update rekordu, ustwienie tytułu na Ferdy dla rekordu o bookid=34
+update book set author='Gom', title='Fer' where bookid=34;
+
 -------------
 #Modyfikacje bazy:
 #Zmiana nazwy kolumny:

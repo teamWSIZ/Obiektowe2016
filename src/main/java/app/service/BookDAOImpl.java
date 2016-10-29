@@ -56,6 +56,47 @@ public class BookDAOImpl implements BookDAO {
         }
     }
 
+    @Override
+    public void delete(Integer id) {
+        try {
+            PreparedStatement st = conn.prepareStatement("delete from book where bookid=(?)");
+            st.setInt(1, id);
+            st.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public Book getById(Integer bookid) {
+        try {
+            PreparedStatement st = conn.prepareStatement("SELECT * from book where bookid=(?)");
+            List<Book> books = getBooks(st);
+            if (books.size()!=1) return null;
+            return books.get(0);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public void update(Book b) {
+        Integer id = b.getBookid();
+        if (id==null || id==0) return;
+        try {
+            PreparedStatement st = conn.prepareStatement(
+                    "update book set title=(?), author=(?) where bookid=(?)");
+            st.setString(1, b.getTitle());
+            st.setString(2, b.getAuthor());
+            st.setInt(3, id);
+            st.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     // Mamy "preparedStatement", czyli przygotowane zapytanie, chcemy go wykonać na bazie
     // i odczytać listę książek która zawsze będzie w odpowiedzi.
     // dostajemy ResutSet, który zawiera listę obiektów typu Book, chcemy z niego wyrwać
