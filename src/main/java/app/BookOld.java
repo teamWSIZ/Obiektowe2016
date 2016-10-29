@@ -1,4 +1,4 @@
-package hallo;
+package app;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +9,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class Book {
+public class BookOld {
     String autor;
     String tytul;
     Integer cena;
