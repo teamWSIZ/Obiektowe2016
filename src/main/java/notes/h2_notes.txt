@@ -17,6 +17,10 @@ insert into abc(nazwa) values ('Abra');
 
 select * from abc
 
+#Kasowanie z tabeli
+delete from book
+#z warunkiem:
+delete from book where title='Ferdydurke'
 
 
 -------------

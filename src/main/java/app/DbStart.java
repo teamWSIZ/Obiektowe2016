@@ -16,13 +16,15 @@ public class DbStart {
     public static void main(String[] args) throws Exception {
         Class.forName("org.h2.Driver");
         Connection conn = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/nowabaza", "sa", "");
-        BookDAO dao = new BookDAOImpl(conn);
+        BookDAO bookDAO = new BookDAOImpl(conn);
 
 
-        dao.insertNew(new Book(0,"Rowling", "Harry Potter and the Cursed Child"));
+//        bookDAO.insertNew(new Book(0, "Ferdydurke", "Gombrowicz"));
+//        bookDAO.insertNew(new Book(0, "Harry Potter and the Cursed Child", "Rowling"));
+//        bookDAO.insertNew(new Book(0,"Harry Potter and the Sorcerer's Stone", "Rowling"));
 
 
-        List<Book> books = dao.findAll();
+        List<Book> books = bookDAO.findByAuthor("Rowling");
         for(Book b : books) {
             System.out.println(b);
         }
