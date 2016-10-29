@@ -1,0 +1,13 @@
+
+
+Wykonane 29 Października:
+
+git remote show origin    #sprawdzenie linku (url) do zdalnego repo
+git fetch       #ściąga informacje o tym jakie zmiany wykonano na zdalnym repo
+git log --oneline   #sprwadzenie jakie były po kolei commit-y
+git branch  #sprawdzenie jakie mamy branche (-a podałoby też extra branche z repo)
+git checkout master     #przechodzimy na branch master
+git pull        #ściąga zmiany ze zdalnego repo na lokalne (do aktualnej branch)
+git checkout -b zajecia29Oct    #tworzenie nowej branch i przejście do niej
+history #lista ostatnio wykonanych operacji
+git status  #pokazuje jakie mamy nieza-commit-owane zmiany
