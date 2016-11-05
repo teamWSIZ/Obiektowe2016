@@ -4,3 +4,6 @@ java -cp h2*.jar org.h2.tools.Server
 
 (windows:)
 java -cp "h2-1.4.192.jar;%H2DRIVERS%;%CLASSPATH%" org.h2.tools.Server
+
+Wybieranie portu i adresu sieciowego na którym ma działać serwer (Linux; Windows?):
+java -cp h2*.jar -Dh2.bindAddress=localhost org.h2.tools.Server -tcpPort 1111
