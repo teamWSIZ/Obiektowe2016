@@ -52,6 +52,14 @@ public class BookControler {
         return bookDAO.getById(Integer.valueOf(bookid));
     }
 
+    @RequestMapping("/books/add")
+    public void listAllBooks(
+            @RequestParam(value = "title") String title,
+            @RequestParam(value = "author") String author
+    ) {
+        Book b = new Book(0, title, author);
+        bookDAO.insertNew(b);
+    }
 
 
 }
