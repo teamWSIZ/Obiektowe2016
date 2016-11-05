@@ -1,0 +1,5 @@
+
+System jest serwowany w lokalnej sieci, np. na:
+
+http://172.0.0.156:8081/books
+
