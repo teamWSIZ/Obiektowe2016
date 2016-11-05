@@ -71,6 +71,7 @@ public class BookDAOImpl implements BookDAO {
     public Book getById(Integer bookid) {
         try {
             PreparedStatement st = conn.prepareStatement("SELECT * from book where bookid=(?)");
+            st.setInt(1, bookid);
             List<Book> books = getBooks(st);
             if (books.size()!=1) return null;
             return books.get(0);
