@@ -4,6 +4,7 @@ import app.model.Book;
 import app.service.BookDAO;
 import app.service.BookDAOImpl;
 import app.service.BookMapper;
+import app.service.JdbcTemplateFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
@@ -20,16 +21,12 @@ public class DbStart {
         Class.forName("org.h2.Driver");
         //Łączenie na bazę na extra niestandardowym porcie 1111.
         //Jeśli była uruchamiana normalnie, to można pominąć 1111
-        Connection conn = DriverManager.getConnection("jdbc:h2:tcp://localhost:1111/~/nowabaza", "sa", "");
+        Connection conn = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/nowabaza", "sa", "");
 
-        DriverManagerDataSource dataSource = new DriverManagerDataSource(
-                "jdbc:h2:tcp://localhost:1111/~/nowabaza",
-                "sa",
-                ""
-        );
-        JdbcTemplate template = new JdbcTemplate(dataSource);
-        template.update("insert into book (author,title) values (?,?) ", "sometext","title");
-        template.update("delete from book where author=(?)", "sometext");
+
+        JdbcTemplate template = JdbcTemplateFactory.getTemplate();
+//        template.update("insert into book (author,title) values (?,?) ", "sometext","title");
+//        template.update("delete from book where author=(?)", "sometext");
         List<Book> bookz = template.query("select * from book", new BookMapper());
         System.out.println("-------");
         System.out.println(bookz);
