@@ -11,7 +11,8 @@ public class JdbcTemplateFactory {
 
     public static JdbcTemplate getTemplate() {
         if (template==null) {
-            DriverManagerDataSource dataSource = new DriverManagerDataSource(
+            DriverManagerDataSource dataSource =
+                    new DriverManagerDataSource(
                     "jdbc:h2:tcp://localhost/~/nowabaza",
                     "sa",
                     ""
