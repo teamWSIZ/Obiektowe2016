@@ -15,7 +15,9 @@ import java.util.List;
 public class DbStart {
     public static void main(String[] args) throws Exception {
         Class.forName("org.h2.Driver");
-        Connection conn = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/nowabaza", "sa", "");
+        //Łączenie na bazę na extra niestandardowym porcie 1111.
+        //Jeśli była uruchamiana normalnie, to można pominąć 1111
+        Connection conn = DriverManager.getConnection("jdbc:h2:tcp://localhost:1111/~/nowabaza", "sa", "");
         BookDAO bookDAO = new BookDAOImpl(conn);
 
 
@@ -24,7 +26,7 @@ public class DbStart {
 //        bookDAO.insertNew(new Book(0,"Harry Potter and the Sorcerer's Stone", "Rowling"));
 
 
-        Book doUpdate = new Book(34, "Ferdydurke", "Gombrowicz");
+        Book doUpdate = new Book(1, "Ferdydurke", "W. Gombrowicz");
 //        bookDAO.delete(37);
         bookDAO.update(doUpdate);
 

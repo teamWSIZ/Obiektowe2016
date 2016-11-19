@@ -1,0 +1,14 @@
+
+System jest serwowany w lokalnej sieci, np. na:
+
+http://172.0.0.156:8081/books
+
+http://172.0.0.156:8081/books/all
+
+http://172.0.0.156:8081/books/byid?id=35
+
+http://172.0.0.156:8081/books/byauthor?author=Gombrowicz
+
+http://172.0.0.156:8081/books/add?author=Gombrowicz&title=Dzienniki
+
+
