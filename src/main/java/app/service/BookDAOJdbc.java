@@ -6,7 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.List;
 
 /**
- * Created on 19.11.16, at 08:44
+ * Implementacja {@link BookDAO} wykorzystująca {@link JdbcTemplate}.
  */
 public class BookDAOJdbc implements BookDAO {
     JdbcTemplate template;

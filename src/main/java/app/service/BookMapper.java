@@ -7,6 +7,10 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Zamienia wyniki zapytania na bazie na konkretne instancje klasy Book
+ */
+
 
 public class BookMapper implements RowMapper<Book> {
     @Override
