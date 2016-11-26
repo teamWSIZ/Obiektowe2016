@@ -12,3 +12,21 @@ http://172.0.0.156:8081/books/byauthor?author=Gombrowicz
 http://172.0.0.156:8081/books/add?author=Gombrowicz&title=Dzienniki
 
 
+
+Porządne zaprojektowanie serwisu rest:
+http://www.restapitutorial.com/media/RESTful_Best_Practices-v1_0.pdf
+
+Na bazie (DAO) CRUD:
+C == CREATE
+R == READ
+U == UPDATE
+D == DELETE
+
+
+Metody http:
+POST
+GET
+PUT
+DELETE
+
+
