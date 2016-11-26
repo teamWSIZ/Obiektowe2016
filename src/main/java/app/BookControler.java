@@ -3,6 +3,7 @@ package app;
 import app.model.Book;
 import app.service.BookDAO;
 import app.service.BookDAOJdbc;
+import exceptions.NotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -23,8 +24,42 @@ public class BookControler {
         return bookDAO.findByAuthor(author);
     }
 
-    @RequestMapping("/books/all")
+    @RequestMapping(value = "/books", method = RequestMethod.GET)
     public List<Book> listAllBooks() {
+        return bookDAO.findAll();
+    }
+
+    @RequestMapping(value = "/books/{bookid}", method = RequestMethod.GET)
+    public Book getBookInfo(@PathVariable Integer bookid) {
+        Book b = bookDAO.getById(bookid);
+        System.out.println(b);
+        if (b==null) {
+            throw new NotFoundException(); //narazie nie działa
+        }
+        return b;
+    }
+
+    @RequestMapping(value = "/books", method = RequestMethod.POST)
+    public void createBook(
+            @RequestParam(value = "author", defaultValue = "") String author,
+            @RequestParam(value = "title", defaultValue = "") String title
+    ) {
+        bookDAO.insertNew(new Book(0,title,author));
+    }
+    @RequestMapping(value = "/books/{bookid}", method = RequestMethod.DELETE)
+    public void deleteBook(@PathVariable Integer bookid) {
+        bookDAO.delete(bookid);
+    }
+
+
+
+
+
+
+
+
+    @RequestMapping("/books/all")
+    public List<Book> listAllBookz() {
         return bookDAO.findAll();
     }
 
