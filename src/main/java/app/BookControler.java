@@ -3,9 +3,7 @@ package app;
 import app.model.Book;
 import app.service.BookDAO;
 import app.service.BookDAOJdbc;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +17,7 @@ public class BookControler {
         bookDAO = new BookDAOJdbc();
     }
 
-    @RequestMapping("/books/byauthor")
+    @RequestMapping(value = "/books/byauthor", method = RequestMethod.GET)
     public List<Book> listBooksByAuthor(
             @RequestParam(value = "author", defaultValue = "") String author) {
         return bookDAO.findByAuthor(author);

@@ -24,9 +24,14 @@ D == DELETE
 
 
 Metody http:
-POST
-GET
-PUT
-DELETE
+POST        ---> create
+GET         ---> read
+PUT         ---> update
+DELETE      ---> delete na bazie
 
+W javie:
+@RequestMapping(value = "/books/byauthor", method = RequestMethod.GET)
+dodatkowo @PathVariable
 
+Do pracy z restami poleca się chrome-exstension "postman", razem
+z pluginem do "cookie-interceptor".
