@@ -13,4 +13,10 @@ import lombok.NoArgsConstructor;
 public class User {
     Integer userid;
     String name;
+
+    @Override
+    public String toString() {
+        return "User (id: " + userid +
+                "), name: " + name;
+    }
 }
