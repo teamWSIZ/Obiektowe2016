@@ -3,14 +3,13 @@ package app;
 import app.model.Duty;
 import app.service.duty.DutyDAOJdbc;
 import app.service.duty.DutyDao;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
 
+@CrossOrigin
+@RestController
 public class DutyController {
     DutyDao dutyDao;
 
@@ -27,24 +26,21 @@ public class DutyController {
 
     @RequestMapping(value = "/duties", method = RequestMethod.POST)
     public void createDuty(
-            @RequestParam(value = "userId", defaultValue = "") Integer userId,
-            @RequestParam(value = "breakId", defaultValue = "") Integer breakId,
-            @RequestParam(value = "placeId", defaultValue = "") Integer placeId,
-            @RequestParam(value = "date", defaultValue = "") Date date
-    ) { dutyDao.inserNew(new Duty(0, userId, breakId, placeId, date)); }
+            @RequestBody Duty duty
+    ) { dutyDao.inserNew(new Duty(0, duty.getUserID(),
+                                     duty.getBreakID(),
+                                     duty.getPlaceID(),
+                                     duty.getDate())); }
 
     @RequestMapping(value = "/duties/{dutyId}", method = RequestMethod.PUT)
     public void updateDuty(
-            @RequestParam(value = "userId", defaultValue = "") Integer userId,
-            @RequestParam(value = "breakId", defaultValue = "") Integer breakId,
-            @RequestParam(value = "placeId", defaultValue = "") Integer placeId,
-            @RequestParam(value = "date", defaultValue = "") Date date,
+            @RequestBody Duty duty,
             @PathVariable Integer dutyId
     ) { Duty d = dutyDao.findById(dutyId);
-        d.setUserID(userId);
-        d.setBreakID(breakId);
-        d.setPlaceID(placeId);
-        d.setDate(date);
+        d.setUserID(duty.getUserID());
+        d.setBreakID(duty.getBreakID());
+        d.setPlaceID(duty.getPlaceID());
+        d.setDate(duty.getDate());
         dutyDao.updateDuty(d); }
 
     @RequestMapping(value = "/duties/{dutyId}", method = RequestMethod.DELETE)

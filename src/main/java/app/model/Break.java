@@ -8,11 +8,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Break {
-    Integer breakID;
-    String breakName;
+    Integer breakid;
+    String name;
 
     @Override
     public String toString() {
-        return "Break: id " + breakID + ", name: " + breakName;
+        return "Break: id " + breakid + ", name: " + name;
     }
 }

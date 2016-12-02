@@ -3,14 +3,13 @@ package app;
 import app.model.Place;
 import app.service.place.PlaceDAO;
 import app.service.place.PlaceDAOJdbc;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import sun.management.counter.perf.PerfLongArrayCounter;
 
 import java.util.List;
 
+@CrossOrigin
+@RestController
 public class PlaceController {
     PlaceDAO placeDAO;
 
@@ -27,19 +26,19 @@ public class PlaceController {
 
     @RequestMapping(value = "/places", method = RequestMethod.POST)
     public void createPlace(
-            @RequestParam(value = "placeName", defaultValue = "") String placeName
-    ) { placeDAO.inserNew(new Place(0, placeName)); }
+            @RequestBody Place place
+    ) { placeDAO.inserNew(new Place(0, place.getPlaceName())); }
 
     @RequestMapping(value = "/places/{placesId}", method = RequestMethod.PUT)
     public void updatePlace(
-            @RequestParam(value = "placeName", defaultValue = "") String placeName,
+            @RequestBody Place place,
             @PathVariable Integer placeId
     ) { Place p = placeDAO.findById(placeId);
-        p.setPlaceName(placeName);
+        p.setPlaceName(place.getPlaceName());
         placeDAO.updatePlace(p); }
 
     @RequestMapping(value = "/places/{placeId}", method = RequestMethod.DELETE)
     public void deletePlace(@PathVariable Integer placeId) {
-        placeDAO.deletePlace(placeId    );
+        placeDAO.deletePlace(placeId);
     }
 }
