@@ -8,6 +8,6 @@ public interface PlaceDAO {
     public List<Place> findAll();
     public Place findById(Integer placeId);
     public void inserNew(Place b);
-    public void updateBreak(Place b);
-    public void deleteBreak(Integer placeId);
+    public void updatePlace(Place b);
+    public void deletePlace(Integer placeId);
 }

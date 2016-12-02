@@ -31,7 +31,9 @@ public class BreakController {
     public void updateBreak(
             @RequestParam(value = "breakName", defaultValue = "") String breakName,
             @PathVariable Integer breakId
-    ) { breakDAO.updateBreak(breakDAO.getById(breakId)); } //// TODO: 2016-12-01
+    ) { Break b = breakDAO.getById(breakId);
+        b.setBreakName(breakName);
+        breakDAO.updateBreak(b); }
 
     @RequestMapping(value = "/breaks/{breakId}", method = RequestMethod.DELETE)
     public void deleteBreak(@PathVariable Integer breakId) {

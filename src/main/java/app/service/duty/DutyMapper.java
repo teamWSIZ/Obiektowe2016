@@ -12,7 +12,9 @@ public class DutyMapper implements RowMapper<Duty> {
         Duty d = new Duty();
         d.setDutyID(resultSet.getInt("dutyId"));
         d.setUserID(resultSet.getInt("userId"));
-        //// TODO: 2016-11-26
+        d.setBreakID(resultSet.getInt("breakID"));
+        d.setPlaceID(resultSet.getInt("placeID"));
+        d.setDate(resultSet.getDate("date"));
         return null;
     }
 }

@@ -26,7 +26,7 @@ public class BreakDAOJdbc implements BreakDAO {
 
     @Override
     public void inserNew(Break b) {
-        template.update("insert into breaks (breakname)",
+        template.update("insert into breaks (breakname) values (?)",
                 b.getBreakName());
     }
 
