@@ -1,0 +1,34 @@
+/* Set gray background color and 100% height */
+.sidenav {
+    background-color: #f1f1f1;
+    height: 100%;
+}
+
+.cnt{
+    padding:10px;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+    .sidenav {
+        height: auto;
+        padding: 15px;
+    }
+    .row.content {
+        height: auto;
+    }
+}
+
+.table-edit{
+    padding:0 5px;
+    font-size:1.2em;
+    color:#268dca;
+    cursor:pointer;
+}
+
+.table-remove{
+    padding:0 5px;
+    font-size:1.2em;
+    color:#e61b1b;
+    cursor:pointer;
+}
