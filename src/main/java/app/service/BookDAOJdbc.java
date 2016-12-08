@@ -5,9 +5,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
 
-/**
- * Implementacja {@link BookDAO} wykorzystująca {@link JdbcTemplate}.
- */
 public class BookDAOJdbc implements BookDAO {
     JdbcTemplate template;
 
@@ -23,7 +20,7 @@ public class BookDAOJdbc implements BookDAO {
     @Override
     public void insertNew(Book b) {
         template.update("insert into book (author,title) values (?,?) ",
-                b.getAuthor(),b.getTitle());
+                b.getAuthor(), b.getTitle());
     }
 
     @Override
@@ -34,22 +31,33 @@ public class BookDAOJdbc implements BookDAO {
     }
 
     @Override
-    public void delete(Integer bookid) {
-        template.update("DELETE FROM book where bookid=(?)", bookid);
+    public List<Book> findByTitle(String title) {
+        return template.query("select * from book where title=(?)",
+                new Object[]{title},
+                new BookMapper());
     }
 
     @Override
-    public Book getById(Integer bookid) {
-        return template.queryForObject(
-                "select * from book where bookid=(?)",
-                new Object[]{bookid}, new BookMapper());
+    public Book findById(Integer id) {
+        return template.queryForObject("select * from book where id=(?)",
+                new Object[]{id},
+                new BookMapper());
     }
 
     @Override
-    public void update(Book b) {
-        template.update("UPDATE book set title=(?), author=(?) WHERE bookid=(?)",
-                b.getTitle(),
-                b.getAuthor(),
-                b.getBookid());
+    public void editBook(Book book) {
+        template.update("UPDATE book SET author=(?), title=(?) WHERE id=(?)",
+                book.getAuthor(), book.getTitle(), book.getBookid());
     }
+
+    @Override
+    public void deleteBook(Integer bookid) {
+        template.update("delete from book where id=(?)", bookid);
+    }
+
+    @Override
+    public void deleteTable() {
+        template.update("delete from book");
+    }
+
 }
