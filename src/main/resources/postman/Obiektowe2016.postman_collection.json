@@ -1,97 +1,126 @@
 {
-	"id": "fcbc5d98-a0e5-66ae-e79e-48cb71121580",
-	"name": "Obiektowe2016",
-	"description": "",
-	"order": [
-		"f4dfbbce-182a-b17c-7dc1-72684ba677ce",
-		"a0b26b15-dc21-9ba3-301f-f7fffcdccc59",
-		"39a9f3df-01f4-24cb-ecec-eeaf8d82f59f",
-		"cb66baa2-01dd-011b-d978-7de340c51802"
-	],
-	"folders": [],
-	"timestamp": 1480149744810,
-	"owner": "327814",
-	"public": false,
-	"requests": [
+	"variables": [],
+	"info": {
+		"name": "Obiektowe2016 copy",
+		"_postman_id": "597585a7-305e-a129-82ec-f5beafa8adcb",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
 		{
-			"id": "39a9f3df-01f4-24cb-ecec-eeaf8d82f59f",
-			"headers": "",
-			"url": "http://localhost:8081/books?author=Don Pedro&title=Karramba",
-			"pathVariables": {},
-			"preRequestScript": null,
-			"method": "POST",
-			"collectionId": "fcbc5d98-a0e5-66ae-e79e-48cb71121580",
-			"data": null,
-			"dataMode": "params",
-			"name": "book create",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1480150605309,
-			"version": 2,
-			"responses": [],
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {}
-		},
-		{
-			"id": "a0b26b15-dc21-9ba3-301f-f7fffcdccc59",
-			"headers": "",
-			"url": "http://localhost:8081/books/35",
-			"pathVariables": {},
-			"preRequestScript": null,
-			"method": "GET",
-			"collectionId": "fcbc5d98-a0e5-66ae-e79e-48cb71121580",
-			"data": null,
-			"dataMode": "params",
-			"name": "book by id",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1480149987976,
-			"version": 2,
-			"responses": [],
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {}
-		},
-		{
-			"id": "cb66baa2-01dd-011b-d978-7de340c51802",
-			"headers": "",
-			"url": "http://localhost:8081/books/68",
-			"pathVariables": {},
-			"preRequestScript": null,
-			"method": "DELETE",
-			"collectionId": "fcbc5d98-a0e5-66ae-e79e-48cb71121580",
-			"data": null,
-			"dataMode": "params",
-			"name": "book delete by id",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1480150665914,
-			"version": 2,
-			"responses": [],
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {}
-		},
-		{
-			"id": "f4dfbbce-182a-b17c-7dc1-72684ba677ce",
-			"headers": "",
-			"url": "http://localhost:8081/books",
-			"pathVariables": {},
-			"preRequestScript": null,
-			"method": "GET",
-			"collectionId": "fcbc5d98-a0e5-66ae-e79e-48cb71121580",
-			"data": null,
-			"dataMode": "params",
 			"name": "books all",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1480149801677,
-			"version": 2,
-			"responses": [],
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {}
+			"request": {
+				"url": "http://localhost:8081/books",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "book by id",
+			"request": {
+				"url": "http://localhost:8081/books/35",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "book create",
+			"request": {
+				"url": "http://localhost:8081/books?author=Don Pedro&title=Karramba",
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "book delete by id",
+			"request": {
+				"url": "http://localhost:8081/books/68",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "users all",
+			"request": {
+				"url": "http://localhost:8081/users",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "users add",
+			"request": {
+				"url": "http://localhost:8081/users/add",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"Arrgh\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "users update",
+			"request": {
+				"url": "http://localhost:8081/users/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"userid\":\"1\",\"name\":\"Arrghix\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "users delete",
+			"request": {
+				"url": "http://localhost:8081/users/2",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }
