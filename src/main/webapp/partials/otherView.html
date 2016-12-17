@@ -1,0 +1,120 @@
+<div class="col-sm-4">
+  <div class="panel panel-primary" >
+
+    <h3 class="panel-heading panel-title">
+      Lewy panel
+    </h3>
+
+    <div class="panel-body" >
+      <!--Kolejny podział-->
+      <div class="col-sm-12 boxed">
+        <table class="table table-striped table-condensed" >
+          <thead>
+          <tr>
+            <td class="col-sm-8">Student</td>
+            <td class="col-sm-2">Album</td>
+            <td class="col-sm-2">Dopuszczony</td>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr class="clickable"
+              ng-repeat="eg in egzaminy | orderBy: '+studentid'"
+              ng-click="M.selEgz=(eg?eg:{})">
+            <td>
+              {{eg.student.nazwisko + ' ' + eg.student.imie}}
+            </td>
+            <td> {{eg.student.album}}</td>
+            <td>
+                            <span class="glyphicon"
+                                  ng-class="(eg.allowed?'glyphicon-ok text-success':'glyphicon-remove text-danger')"></span>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <p class="text-left clickable"
+           ng-click="egzaminy.push({})"
+           title="Nowy egzamin">
+          <span class="glyphicon glyphicon-certificate text-info"></span>
+          Nowy egzamin
+        </p>
+      </div>
+    </div>
+
+    <div class="panel-footer">
+      <button ng-click="loadAllLists()">Reload</button>
+      <span> Status:  <br>
+      </span>
+    </div>
+  </div>
+
+  <!--Drugi panel poniżej-->
+  <div class="panel panel-primary">
+    <h3 class="panel-heading panel-title"> Nice title  </h3>
+
+    <div class="panel-body">
+      Body
+    </div>
+
+    <div class="panel-footer">
+      Footer
+    </div>
+  </div>
+  <!--Trzeci panel poniżej-->
+  <div class="panel panel-primary">
+    <h3 class="panel-heading panel-title"> Nice title  </h3>
+
+    <div class="panel-body"  ng-hide="true">
+      Body
+    </div>
+
+    <div class="panel-footer" ng-hide="true">
+      Footer
+    </div>
+  </div>
+
+</div>
+
+
+<!-- Prawy panel -->
+<div class="col-sm-8">
+
+  <div class="panel panel-primary" >
+
+    <h3 class="panel-heading panel-title">
+      Header panelu
+    </h3>
+
+    <div class="panel-body" >
+      <div class="boxed">
+        <form class="form-inline  ">
+          <div class="form-group">
+            Dyplomant
+            <select class="form-control"
+                    ng-model="M.selEgz.student"
+                    ng-options="(dy.nazwisko + ' ' + dy.imie) for dy in dyplomanci track by dy.studentid"></select>
+          </div>
+        </form>
+
+        <form class="form-inline  ">
+          <div class="form-group">
+            Temat Pracy:
+            <input class="form-control wide-input" ng-model="M.selEgz.tematPracy">
+          </div>
+        </form>
+        <form class="form-inline  ">
+          <div class="form-group">
+            Ocena formalna pracy dyplomowej (dziekana):
+            <input class="form-control narrow-input" ng-model="M.selEgz.ocenaFormalnaDziekanatu">
+          </div>
+        </form>
+        <form class="form-inline  ">
+          <div class="form-group">
+            Średnia ocena ze studiów:
+            <input class="form-control narrow-input" ng-model="M.selEgz.sredniaStudia">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

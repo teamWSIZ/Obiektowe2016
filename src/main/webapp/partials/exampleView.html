@@ -1,0 +1,178 @@
+<div class="col-sm-3">
+    <div class="panel panel-primary" >
+
+        <h3 class="panel-heading panel-title">
+            Aktywne egzaminy
+        </h3>
+
+        <div class="panel-body" >
+            <div class="col-sm-12 boxed">
+                <table class="table table-striped table-condensed" >
+                    <thead>
+                    <tr>
+                        <td class="col-sm-8">Student</td>
+                        <td class="col-sm-2">Album</td>
+                        <td class="col-sm-2">Dopuszczony</td>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr class="clickable"
+                        ng-repeat="eg in egzaminy | orderBy: '+studentid'"
+                        ng-click="M.selEgz=(eg?eg:{})">
+                        <td>
+                            {{eg.student.nazwisko + ' ' + eg.student.imie}}
+                        </td>
+                        <td> {{eg.student.album}}</td>
+                        <td>
+                            <span class="glyphicon"
+                                  ng-class="(eg.allowed?'glyphicon-ok text-success':'glyphicon-remove text-danger')"></span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p class="text-left clickable"
+                   ng-click="egzaminy.push({})"
+                   title="Nowy egzamin">
+                    <span class="glyphicon glyphicon-certificate text-info"></span>
+                    Nowy egzamin
+                </p>
+            </div>
+        </div>
+
+        <div class="panel-footer">
+            <button ng-click="loadAllLists()">Reload</button>
+            <span>
+                Status:  <br>
+            </span>
+        </div>
+    </div>
+</div>
+
+<!-- Szczegóły egzaminu -->
+<div class="col-sm-9">
+
+    <div class="panel panel-primary" >
+
+        <h3 class="panel-heading panel-title">
+            Egzamin Dyplomowy WSIZ
+        </h3>
+
+        <div class="panel-body" >
+            <div class="boxed">
+                <form class="form-inline  ">
+                    <div class="form-group">
+                        Dyplomant
+                        <select class="form-control"
+                                ng-model="M.selEgz.student"
+                                ng-options="(dy.nazwisko + ' ' + dy.imie) for dy in dyplomanci track by dy.studentid"></select>
+                    </div>
+                </form>
+
+                <form class="form-inline  ">
+                    <div class="form-group">
+                        Temat Pracy:
+                        <input class="form-control wide-input" ng-model="M.selEgz.tematPracy">
+                    </div>
+                </form>
+                <form class="form-inline  ">
+                    <div class="form-group">
+                        Ocena formalna pracy dyplomowej (dziekana):
+                        <input class="form-control narrow-input" ng-model="M.selEgz.ocenaFormalnaDziekanatu">
+                    </div>
+                </form>
+                <form class="form-inline  ">
+                    <div class="form-group">
+                        Średnia ocena ze studiów:
+                        <input class="form-control narrow-input" ng-model="M.selEgz.sredniaStudia">
+                    </div>
+                </form>
+            </div>
+
+
+            <!--Część wykładowców WSIZ-->
+            <div class="col-sm-12 boxed  table-responsive" style="overflow: auto">
+
+                <table class="table table-striped table-bordered table-condensed" >
+                    <thead>
+                    <tr>
+                        <td class="col-sm-1"> Rola</td>
+                        <td class="col-sm-3"> Wykładowca</td>
+                        <td class="narrow-input"> Recenzja (ocena)</td>
+                        <td class="col-sm-7"> Pytanie </td>
+                        <td class="col-sm-1"> Ocena odpowiedzi </td>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                        <td>Promotor</td>
+                        <td>
+                            <select class="form-control"
+                                    ng-model="M.selEgz.promotor"
+                                    ng-options="(wy.nazwisko + ' ' + wy.imie) for wy in wykladowcy track by wy.wykladowcaid"></select>
+                        </td>
+                        <td>
+                            <input class="form-control narrow-input" ng-model="M.selEgz.ocenaPromotoraPraca">
+                        </td>
+                        <td>{{M.selEgz.pytaniePromotora}}</td>
+                        <td>{{M.selEgz.ocenaPromotoraPytanie}}</td>
+                    </tr>
+                    <tr>
+                        <td>Recenzent</td>
+                        <td>
+                            <select class="form-control"
+                                    ng-model="M.selEgz.recenzent"
+                                    ng-options="(wy.nazwisko + ' ' + wy.imie) for wy in wykladowcy track by wy.wykladowcaid"></select>
+                        </td>
+                        <td>
+                            <input class="form-control narrow-input" ng-model="M.selEgz.ocenaRecenzentaPraca">
+                        </td>
+                        <td>{{M.selEgz.pytanieRecenzenta}}</td>
+                        <td>{{M.selEgz.ocenaRecenzentaPytanie}}</td>
+                    </tr>
+                    <tr>
+                        <td>Przew. Komisji</td>
+                        <td>
+                            <select class="form-control"
+                                    ng-model="M.selEgz.chair"
+                                    ng-options="(wy.nazwisko + ' ' + wy.imie) for wy in wykladowcy track by wy.wykladowcaid"></select>
+                        </td>
+                        <td>
+
+                        </td>
+                        <td>{{M.selEgz.pytanieChaira}}</td>
+                        <td>{{M.selEgz.ocenaChairaPytanie}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <form class="form-inline  ">
+                    <div class="form-group">
+                        Ocena średnia z egzaminu testowego:
+                        <input class="form-control narrow-input" ng-model="M.selEgz.ocenaTestuStudia">
+                    </div>
+                </form>
+            </div>
+
+            <!-- Button kontrolny dziekanatu (zapisz, dopuść do obrony)-->
+            <div class="moveRight">
+                <button class="btn btn-primary"
+                        ng-if="!M.selEgz.allowed"
+                        ng-click="submitObronaAdmin(M.selEgz)">Zapisz</button>
+                <button class="btn btn-success"
+                        ng-if="!M.selEgz.allowed && isObrAllowable(M.selEgz)"
+                        ng-click="allowObrona(M.selEgz)">Dopuść do obrony</button>
+            </div>
+            <br>
+
+
+        </div>
+        <div class="panel-footer">
+            <span>
+                Status:  {{M.selEgz}}  <hr>
+                Allowed: {{M.selEgz.allowed}} <hr>
+                AllAble: {{isObrAllowable(M.selEgz)}}
+            </span>
+        </div>
+    </div>
+</div>
