@@ -121,6 +121,59 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "breaks all",
+			"request": {
+				"url": "http://localhost:8081/breaks",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "places all",
+			"request": {
+				"url": "http://localhost:8081/places",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "duties add",
+			"request": {
+				"url": "http://localhost:8081/duties",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"userid\":\"1\",\n\t\"breakid\":\"2\",\n\t\"placeid\":\"1\",\n\t\"date\":\"2017-01-01\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "duties all",
+			"request": {
+				"url": "http://localhost:8081/duties",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }

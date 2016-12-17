@@ -9,10 +9,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Break {
     Integer breakid;
-    String name;
+    String breakname;
 
     @Override
     public String toString() {
-        return "Break: id " + breakid + ", name: " + name;
+        return "Break: id " + breakid + ", breakname: " + breakname;
     }
 }

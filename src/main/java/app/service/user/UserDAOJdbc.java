@@ -1,6 +1,7 @@
-package app.service;
+package app.service.user;
 
 import app.model.User;
+import app.service.*;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
@@ -18,15 +19,15 @@ public class UserDAOJdbc implements UserDAO {
     @Override
     public void insertNew(User u) {
         template.update(
-                "INSERT INTO users (name) VALUES (?)",
-                u.getName()
+                "INSERT INTO user (username) VALUES (?)",
+                u.getUsername()
         );
     }
 
     @Override
     public void delete(Integer userid) {
         template.update(
-                "DELETE FROM users WHERE userid=(?)",
+                "DELETE FROM user WHERE userid=(?)",
                 userid
         );
     }
@@ -34,8 +35,8 @@ public class UserDAOJdbc implements UserDAO {
     @Override
     public void update(User u) {
         template.update(
-                "UPDATE users SET name=(?) WHERE userid=(?)",
-                u.getName(),
+                "UPDATE user SET username=(?) WHERE userid=(?)",
+                u.getUsername(),
                 u.getUserid()
         );
     }
@@ -43,7 +44,7 @@ public class UserDAOJdbc implements UserDAO {
     @Override
     public List<User> findAll() {
         return template.query(
-            "SELECT * FROM users ORDER BY name ASC",
+            "SELECT * FROM user ORDER BY username ASC",
             new UserMapper()
         );
     }
@@ -51,7 +52,7 @@ public class UserDAOJdbc implements UserDAO {
     @Override
     public User getById(Integer userid) {
         return template.queryForObject(
-            "SELECT * FROM users WHERE userid=(?) ORDER BY name ASC",
+            "SELECT * FROM user WHERE userid=(?) ORDER BY username ASC",
             new Object[]{userid},
             new UserMapper()
         );
@@ -60,7 +61,7 @@ public class UserDAOJdbc implements UserDAO {
     @Override
     public List<User> findByName(String name) {
         return template.query(
-            "SELECT * FROM users WHERE name=(?) ORDER BY name ASC",
+            "SELECT * FROM user WHERE username=(?) ORDER BY username ASC",
             new Object[]{name},
             new UserMapper()
         );

@@ -1,10 +1,9 @@
-package app;
+package app.controller;
 
 import app.model.Place;
 import app.service.place.PlaceDAO;
 import app.service.place.PlaceDAOJdbc;
 import org.springframework.web.bind.annotation.*;
-import sun.management.counter.perf.PerfLongArrayCounter;
 
 import java.util.List;
 
@@ -27,14 +26,14 @@ public class PlaceController {
     @RequestMapping(value = "/places", method = RequestMethod.POST)
     public void createPlace(
             @RequestBody Place place
-    ) { placeDAO.inserNew(new Place(0, place.getPlaceName())); }
+    ) { placeDAO.inserNew(new Place(0, place.getPlacename())); }
 
     @RequestMapping(value = "/places/{placesId}", method = RequestMethod.PUT)
     public void updatePlace(
             @RequestBody Place place,
             @PathVariable Integer placeId
     ) { Place p = placeDAO.findById(placeId);
-        p.setPlaceName(place.getPlaceName());
+        p.setPlacename(place.getPlacename());
         placeDAO.updatePlace(p); }
 
     @RequestMapping(value = "/places/{placeId}", method = RequestMethod.DELETE)

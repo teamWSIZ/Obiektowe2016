@@ -10,18 +10,18 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Duty {
-    Integer dutyID;
-    Integer userID;
-    Integer breakID;
-    Integer placeID;
+    Integer dutyid;
+    Integer userid;
+    Integer breakid;
+    Integer placeid;
     Date date;
 
     @Override
     public String toString() {
-        return "Duty (id: " + dutyID +
-                "), user: " + userID +
-                ", Break: " + breakID +
-                ", place: " + placeID +
+        return "Duty (id: " + dutyid +
+                "), user: " + userid +
+                ", Break: " + breakid +
+                ", place: " + placeid +
                 ", date: " + date;
     }
 }

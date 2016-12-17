@@ -10,11 +10,11 @@ public class DutyMapper implements RowMapper<Duty> {
     @Override
     public Duty mapRow(ResultSet resultSet, int i) throws SQLException {
         Duty d = new Duty();
-        d.setDutyID(resultSet.getInt("dutyId"));
-        d.setUserID(resultSet.getInt("userId"));
-        d.setBreakID(resultSet.getInt("breakid"));
-        d.setPlaceID(resultSet.getInt("placeID"));
+        d.setDutyid(resultSet.getInt("dutyid"));
+        d.setUserid(resultSet.getInt("userid"));
+        d.setBreakid(resultSet.getInt("breakid"));
+        d.setPlaceid(resultSet.getInt("placeid"));
         d.setDate(resultSet.getDate("date"));
-        return null;
+        return d;
     }
 }

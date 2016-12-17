@@ -10,11 +10,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class User {
     Integer userid;
-    String name;
+    String username;
 
     @Override
     public String toString() {
         return "User (id: " + userid +
-                "), name: " + name;
+                "), breakname: " + username;
     }
 }

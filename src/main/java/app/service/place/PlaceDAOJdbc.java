@@ -13,30 +13,30 @@ public class PlaceDAOJdbc implements PlaceDAO {
 
     @Override
     public List<Place> findAll() {
-        return template.query("select * from places", new PlaceMapper());
+        return template.query("select * from place", new PlaceMapper());
     }
 
     @Override
     public Place findById(Integer placeId) {
         return template.queryForObject(
-                "select * from places where placeid=(?)",
+                "select * from place where placeid=(?)",
                 new Object[]{placeId}, new PlaceMapper());
     }
 
     @Override
     public void inserNew(Place p) {
-        template.update("insert into places (placename) values (?)",
-                p.getPlaceName());
+        template.update("insert into place (placename) values (?)",
+                p.getPlacename());
     }
 
     @Override
     public void updatePlace(Place p) {
-        template.update("update places set placename=(?) where placeid=(?)",
-                p.getPlaceName(), p.getPlaceID());
+        template.update("update place set placename=(?) where placeid=(?)",
+                p.getPlacename(), p.getPlaceid());
     }
 
     @Override
     public void deletePlace(Integer placeId) {
-        template.update("delete from places where placeid=(?)", placeId);
+        template.update("delete from place where placeid=(?)", placeId);
     }
 }
