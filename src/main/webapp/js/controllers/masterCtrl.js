@@ -7,13 +7,23 @@ angular.module('myApp.controllers').controller('masterCtrl',
         function ($rootScope, $scope, $http) {
             console.log('Uruchamiam masterCtrl');
 
-            $scope.napis = 'Abra kadabra';
-            
-            $scope.tabRezerwacji = [
-                {id:1, nazwa:'Alpha'},
-                {id:2, nazwa:'Beta'},
-                {id:3, nazwa:'Gamma'}
-            ];
+            $scope.napis = 'Lorem ipsum dolor sit';
+            $scope.firstLoad = true;
+            $scope.usersList = [];
+            $scope.M = {};
+            $scope.M.newUser = {userid:'', username:'nowy user'};
+
+            if ($scope.firstLoad) {
+                $scope.tabRezerwacji = [
+                    {id:1, nazwa:'Alpha'},
+                    {id:2, nazwa:'Beta'},
+                    {id:3, nazwa:'Gamma'}
+                ];
+            } else {
+                $scope.tabRezerwacji = [
+                    {id:1, nazwa:'Alpha'}
+                ];
+            }
 
             $scope.nowa = {id: '', nazwa: ''};
 
@@ -21,6 +31,27 @@ angular.module('myApp.controllers').controller('masterCtrl',
                 $scope.tabRezerwacji.push(nnn);
                 $scope.nowa = {id: '', nazwa: ''};
                 $scope.MMM.showNewBooking = false;
+            };
+
+            //Wczytuje userów systemu z bazy przez kontroler serwera
+            $scope.loadUsers = function () {
+                return $http({
+                    url: $rootScope.M.rootUrl + '/users',
+                    method: 'GET'
+                }).success(function(data){
+                    $scope.usersList = data;
+                });      
+            };
+
+            $scope.addUser = function () {
+                //addUser(M.newuser)
+                var userToSave = $scope.M.newUser;
+                return $http({
+                    url: $rootScope.M.rootUrl + '/users',
+                    method: 'POST',
+                    params: userToSave
+                }).success(function(data){
+                });
             };
 
 
@@ -32,7 +63,7 @@ angular.module('myApp.controllers').controller('masterCtrl',
                 };
 
                 return $http({
-                    url: rootUrl + 'obrony/setWynik',
+                    url: rootUrl + '/users',
                     method: 'POST',
                     params: toSave
                 }).success(function(data){

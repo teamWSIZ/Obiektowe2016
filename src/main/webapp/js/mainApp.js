@@ -17,6 +17,9 @@ app.config(['$routeProvider', function ($routeProvider) {
     }).when('/rezerwacje', {
         templateUrl: urlBase + 'rezerwacjeView.html',
         controller: 'masterCtrl'
+    }).when('/users', {
+        templateUrl: urlBase + 'usersView.html',
+        controller: 'masterCtrl'
     }).when('/view2', {
         templateUrl: urlBase + 'serwisHttp.html',
         controller: 'internetowyCtrl'
@@ -28,6 +31,7 @@ app.run(function ($rootScope) {
     //Model object --- main data
     $rootScope.M = {};
     $rootScope.M.url = 'http://localhost:8090/forum-0.1.1/';
+    $rootScope.M.rootUrl = 'http://localhost:8081';
 
     $rootScope.dyplomanci = [
         {nazwisko:'Xilan', imie:'Wu', studentid:1},
