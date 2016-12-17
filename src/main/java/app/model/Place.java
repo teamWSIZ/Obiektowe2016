@@ -4,17 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
-    Integer userid;
-    String name;
+public class Place {
+    Integer placeID;
+    String placeName;
 
     @Override
     public String toString() {
-        return "User (id: " + userid +
-                "), name: " + name;
+        return placeName;
     }
 }
