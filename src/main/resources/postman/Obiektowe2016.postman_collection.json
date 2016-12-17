@@ -76,7 +76,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"name\":\"Arrgh\"}"
+					"raw": "{\"username\":\"Arrgh\"}"
 				},
 				"description": ""
 			},

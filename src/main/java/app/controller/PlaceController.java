@@ -15,7 +15,9 @@ public class PlaceController {
     public PlaceController() { placeDAO = new PlaceDAOJdbc(); }
 
     @RequestMapping(value = "/places", method = RequestMethod.GET)
-    public List<Place> allPlaces() { return placeDAO.findAll(); }
+    public List<Place> allPlaces() {
+        return placeDAO.findAll();
+    }
 
     @RequestMapping(value = "/places/{placeId}", method = RequestMethod.GET)
     public Place getPlaceInfo(@PathVariable Integer placeId) {
@@ -26,15 +28,19 @@ public class PlaceController {
     @RequestMapping(value = "/places", method = RequestMethod.POST)
     public void createPlace(
             @RequestBody Place place
-    ) { placeDAO.inserNew(new Place(0, place.getPlacename())); }
+    ) {
+        placeDAO.inserNew(new Place(0, place.getPlacename()));
+    }
 
     @RequestMapping(value = "/places/{placesId}", method = RequestMethod.PUT)
     public void updatePlace(
             @RequestBody Place place,
             @PathVariable Integer placeId
-    ) { Place p = placeDAO.findById(placeId);
+    ) {
+        Place p = placeDAO.findById(placeId);
         p.setPlacename(place.getPlacename());
-        placeDAO.updatePlace(p); }
+        placeDAO.updatePlace(p);
+    }
 
     @RequestMapping(value = "/places/{placeId}", method = RequestMethod.DELETE)
     public void deletePlace(@PathVariable Integer placeId) {
