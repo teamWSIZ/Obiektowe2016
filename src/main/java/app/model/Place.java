@@ -8,11 +8,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Place {
-    Integer placeID;
-    String placeName;
+    Integer placeid;
+    String placename;
 
     @Override
     public String toString() {
-        return placeName;
+        return placename;
     }
 }

@@ -10,8 +10,8 @@ public class BreakMapper implements RowMapper<Break> {
     @Override
     public Break mapRow(ResultSet resultSet, int i) throws SQLException {
         Break b = new Break();
-        b.setBreakid(resultSet.getInt("breakId"));
-        b.setName(resultSet.getString("name"));
+        b.setBreakid(resultSet.getInt("breakid"));
+        b.setBreakname(resultSet.getString("breakname"));
         return b;
     }
 }

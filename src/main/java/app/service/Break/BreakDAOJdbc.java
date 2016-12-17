@@ -14,30 +14,30 @@ public class BreakDAOJdbc implements BreakDAO {
 
     @Override
     public List<Break> findAll() {
-        return template.query("select * from breaks", new BreakMapper());
+        return template.query("select * from break", new BreakMapper());
     }
 
     @Override
     public Break getById(Integer breakId) {
         return template.queryForObject(
-                "select * from breaks where breakid=(?)",
+                "select * from break where breakid=(?)",
                 new Object[]{breakId}, new BreakMapper());
     }
 
     @Override
     public void inserNew(Break b) {
-        template.update("insert into breaks (breakname) values (?)",
-                b.getName());
+        template.update("insert into break (breakname) values (?)",
+                b.getBreakname());
     }
 
     @Override
     public void updateBreak(Break b) {
-        template.update("update breaks set breakname=(?) where breakid=(?)",
-                b.getName(), b.getBreakid());
+        template.update("update break set breakname=(?) where breakid=(?)",
+                b.getBreakname(), b.getBreakid());
     }
 
     @Override
     public void deleteBreak(Integer breakId) {
-        template.update("delete from breaks where breakid=(?)", breakId);
+        template.update("delete from break where breakid=(?)", breakId);
     }
 }

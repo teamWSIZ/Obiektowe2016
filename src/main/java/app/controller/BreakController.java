@@ -1,4 +1,4 @@
-package app;
+package app.controller;
 
 import app.model.Break;
 import app.service.Break.BreakDAO;
@@ -28,14 +28,14 @@ public class BreakController {
     @RequestMapping(value = "/breaks", method = RequestMethod.POST)
     public void createBreak(
             @RequestBody Break b
-    ) { breakDAO.inserNew(new Break(0, b.getName())); }
+    ) { breakDAO.inserNew(new Break(0, b.getBreakname())); }
 
     @RequestMapping(value = "/breaks/{breakId}", method = RequestMethod.PUT)
     public void updateBreak(
             @RequestBody Break br,
             @PathVariable Integer breakId
     ) { Break b = breakDAO.getById(breakId);
-        b.setName(br.getName());
+        b.setBreakname(br.getBreakname());
         breakDAO.updateBreak(b); }
 
     @RequestMapping(value = "/breaks/{breakId}", method = RequestMethod.DELETE)

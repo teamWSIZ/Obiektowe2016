@@ -10,8 +10,8 @@ public class PlaceMapper implements RowMapper<Place>{
     @Override
     public Place mapRow(ResultSet resultSet, int i) throws SQLException {
         Place p = new Place();
-        p.setPlaceID(resultSet.getInt("placeID"));
-        p.setPlaceName(resultSet.getString("placeName"));
+        p.setPlaceid(resultSet.getInt("placeid"));
+        p.setPlacename(resultSet.getString("placename"));
         return p;
     }
 }

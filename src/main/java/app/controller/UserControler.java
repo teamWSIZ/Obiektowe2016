@@ -1,8 +1,8 @@
-package app;
+package app.controller;
 
 import app.model.User;
-import app.service.UserDAO;
-import app.service.UserDAOJdbc;
+import app.service.user.UserDAO;
+import app.service.user.UserDAOJdbc;
 import exceptions.NotFoundException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,12 +24,12 @@ public class UserControler {
 
     @RequestMapping(value = "/users/add", method = RequestMethod.POST)
     public void createUser(@RequestBody User user){
-        userDAO.insertNew(new User(0,user.getName()));
+        userDAO.insertNew(new User(0,user.getUsername()));
     }
 
     @RequestMapping(value = "/users/{userid}", method = RequestMethod.PUT)
     public void updateUser(@PathVariable Integer userid, @RequestBody User user) {
-        userDAO.update(new User(userid, user.getName()));
+        userDAO.update(new User(userid, user.getUsername()));
     }
 
     @RequestMapping(value = "/users/{userid}", method = RequestMethod.DELETE)
@@ -51,7 +51,7 @@ public class UserControler {
 
     @RequestMapping(value = "/users/byname", method = RequestMethod.GET)
     public List<User> listUsersByName(@RequestBody User user) {
-        return userDAO.findByName(user.getName());
+        return userDAO.findByName(user.getUsername());
     }
 
     @RequestMapping(value = "/users/{userid}", method = RequestMethod.GET)

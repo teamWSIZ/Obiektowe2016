@@ -1,11 +1,10 @@
-package app;
+package app.controller;
 
 import app.model.Duty;
 import app.service.duty.DutyDAOJdbc;
 import app.service.duty.DutyDao;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.List;
 
 @CrossOrigin
@@ -27,9 +26,9 @@ public class DutyController {
     @RequestMapping(value = "/duties", method = RequestMethod.POST)
     public void createDuty(
             @RequestBody Duty duty
-    ) { dutyDao.inserNew(new Duty(0, duty.getUserID(),
-                                     duty.getBreakID(),
-                                     duty.getPlaceID(),
+    ) { dutyDao.inserNew(new Duty(0, duty.getUserid(),
+                                     duty.getBreakid(),
+                                     duty.getPlaceid(),
                                      duty.getDate())); }
 
     @RequestMapping(value = "/duties/{dutyId}", method = RequestMethod.PUT)
@@ -37,9 +36,9 @@ public class DutyController {
             @RequestBody Duty duty,
             @PathVariable Integer dutyId
     ) { Duty d = dutyDao.findById(dutyId);
-        d.setUserID(duty.getUserID());
-        d.setBreakID(duty.getBreakID());
-        d.setPlaceID(duty.getPlaceID());
+        d.setUserid(duty.getUserid());
+        d.setBreakid(duty.getBreakid());
+        d.setPlaceid(duty.getPlaceid());
         d.setDate(duty.getDate());
         dutyDao.updateDuty(d); }
 
