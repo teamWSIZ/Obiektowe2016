@@ -1,0 +1,40 @@
+<!doctype html>
+<html ng-app="myApp" ng-controller="masterCtrl" xmlns:ng-model="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Przykładowa Single Page App (AngularJS)</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" ></script>
+
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/mainApp.js"></script>
+    <script src="js/controllers/masterCtrl.js"></script>
+    <script src="js/controllers/internetowyCtrl.js"></script>
+
+
+</head>
+<body data-ng-cloak="" class="pagestyle">
+
+
+<div class="container-fluid">
+    <!--gets whole row-->
+    <ng-include src="'partials/topBar.html'"></ng-include>
+
+    <div class="row mainbody">
+        <div class="col-sm-12 mainpanel">
+            <div class="row">
+                <div data-ng-view="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<div class="col-sm-3">
+    <div class="panel panel-primary" >
+
+        <h3 class="panel-heading panel-title">
+            Kontrolki...
+        </h3>
+
+        <div class="panel-body" >
+
+        </div>
+
+        <div class="panel-footer">
+            <button ng-click="prostyLoad()">Zaciągnij posty</button>
+            <button ng-click="sendPostX()">Karrramba - wyślij...</button>
+            <span>
+                Status:  <br>
+            </span>
+        </div>
+    </div>
+</div>
+
+<!-- Szczegóły egzaminu -->
+<div class="col-sm-9">
+
+    <div class="panel panel-primary" >
+
+        <h3 class="panel-heading panel-title">
+            Panel główny
+        </h3>
+
+        <div class="panel-body" >
+            <p>Lorem ipsum dolor sit ...</p>
+            <input ng-model="fff" placeholder="Filtrowanie...">
+            {{fff}}
+
+            <table class="table table-bordered table-responsive
+            table-condensed table-striped">
+                <thead>
+                <tr>
+                    <td> Postid</td>
+                    <td> Userid</td>
+                    <td> Tytuł</td>
+                    <td> Treść</td>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in M.posty | filter:fff">
+                        <td> {{item.id}}</td>
+                        <td> {{item.userId}}</td>
+                        <td> {{item.title}}</td>
+                        <td> {{item.body.substring(0,40)}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--<p> Posty: <br> {{posty}}</p>-->
+
+        </div>
+        <div class="panel-footer">
+            Wpisz pesel:<br>
+            <input class="form-control form-danger" ng-model="pesel" >
+            <div class="glyphicon" ng-class="(isValidPesel(pesel)) ?
+                'glyphicon-ok text-success' :  'glyphicon-remove text-danger'"></div>
+            <br>
+            <!--<div class="alert alert-danger" ng-if="pesel.length!=4">-->
+                <!--Pesel powinien być długośći 4 a jest długości {{pesel.length}}-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>

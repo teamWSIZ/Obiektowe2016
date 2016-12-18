@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-sm-4  ">
+    </div>
+    <div class="col-sm-4">
+        <h2 style="text-align: center"> Logowanie </h2>
+        <div class="panel panel-default">
+            <form style="padding: 10px">
+                <div class="form-group">
+                    <label for="album">Album</label>
+                    <input type="text" class="form-control" id="album" ng-model="user.album">
+                </div>
+                <div class="form-group">
+                    <label for="passwd">Hasło</label>
+                    <input type="password" class="form-control" id="passwd" ng-model="user.pass">
+                </div>
+                <div style="text-align: center">
+                    <button class="btn btn-success" ng-click="login(user.album, user.pass)"> Zaloguj </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-sm-4  ">
+    </div>
+</div>

@@ -22,7 +22,7 @@ public class UserControler {
     }
 
 
-    @RequestMapping(value = "/users/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/users", method = RequestMethod.POST)
     public void createUser(@RequestBody User user){
         userDAO.insertNew(new User(0,user.getUsername()));
     }

@@ -1,3 +1,4 @@
+-- noinspection SqlNoDataSourceInspectionForFile
 create table book(
   bookid int auto_increment,
   author text,
