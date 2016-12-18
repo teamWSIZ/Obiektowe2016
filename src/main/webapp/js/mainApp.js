@@ -27,12 +27,14 @@ app.config(['$routeProvider', function ($routeProvider) {
 }]);
 
 app.run(function ($rootScope) {
+    //Uruchamiane tylko raz przy załadowaniu webapp-a
     console.log('Uruchamiam app.run');
-    //Model object --- main data
+
+    //Globalny obiekt modelu
     $rootScope.M = {};
-    $rootScope.M.url = 'http://localhost:8090/forum-0.1.1/';
     $rootScope.M.rootUrl = 'http://localhost:8081';
 
+    // Globalnie-dostępna tablica i referencja do jednego z jej elementów (M.selEgz)
     $rootScope.dyplomanci = [
         {nazwisko:'Xilan', imie:'Wu', studentid:1},
         {nazwisko:'Xi', imie:'Jinping', studentid:2},

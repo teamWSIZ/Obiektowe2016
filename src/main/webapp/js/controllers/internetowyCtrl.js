@@ -56,7 +56,7 @@ angular.module('myApp.controllers').controller('internetowyCtrl',
                 authSrv.login(u.album, u.pass).success(function(data){
                     if (data.status==='OK') {
                         $scope.user.isLogIn = true;
-                        $location.path("/administracja");//redirect
+                        $location.path("/administracja"); //redirect
                     } else {
                         $scope.message = 'Błąd logowania';
                         alert($scope.message);

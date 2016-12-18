@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "Obiektowe2016 copy",
-		"_postman_id": "597585a7-305e-a129-82ec-f5beafa8adcb",
+		"_postman_id": "2af83c02-0b7c-03af-218c-f2aea9cb5562",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -13,7 +13,10 @@
 				"url": "http://localhost:8081/books",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -24,7 +27,10 @@
 				"url": "http://localhost:8081/books/35",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -35,7 +41,10 @@
 				"url": "http://localhost:8081/books?author=Don Pedro&title=Karramba",
 				"method": "POST",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -46,7 +55,10 @@
 				"url": "http://localhost:8081/books/68",
 				"method": "DELETE",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -57,7 +69,10 @@
 				"url": "http://localhost:8081/users",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -76,7 +91,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"username\":\"Arrgh\"}"
+					"raw": "{\"name\":\"Arrgh\"}"
 				},
 				"description": ""
 			},
@@ -128,7 +143,10 @@
 				"url": "http://localhost:8081/breaks",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -139,7 +157,10 @@
 				"url": "http://localhost:8081/places",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -158,7 +179,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"userid\":\"1\",\n\t\"breakid\":\"2\",\n\t\"placeid\":\"1\",\n\t\"date\":\"2017-01-01\"\n}"
+					"raw": "{\n  \"userid\":\"1\",\n  \"breakid\":\"2\",\n  \"placeid\":\"1\",\n  \"date\":\"2017-01-01\"\n}"
 				},
 				"description": ""
 			},
@@ -170,7 +191,10 @@
 				"url": "http://localhost:8081/duties",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
