@@ -1,1 +1,1 @@
-To jest stary branch gdzie dostęp do bazy był bez jdbctemplate.
+Aktualna werjsa projektu
