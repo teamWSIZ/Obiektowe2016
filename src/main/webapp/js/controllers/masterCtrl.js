@@ -11,15 +11,17 @@ angular.module('myApp.controllers').controller('masterCtrl',
 
             //Lokalny obiekt modelu, tworzony przy każdym uruchomieniu kontrolera
             $scope.M = {};
-            $scope.M.newUser = {userid: '-1', username: 'nowy user'};
-            $scope.usersList = [];
+            $scope.users = [];
+            $scope.M.selUser = {userid:'', username: ''};
+            $scope.M.uU = false;
 
-            $scope.nowa = {id: '', nazwa: ''};
+            //Aliasy
+            var url = $rootScope.M.rootUrl;
 
-            $scope.dodajRezerwacje = function (nnn) {
-                $scope.tabRezerwacji.push(nnn);
-                $scope.nowa = {id: '', nazwa: ''};
-                $scope.MMM.showNewBooking = false;
+
+            $scope.addEmptyUser = function () {
+                $scope.users.push({userid:'', username:'---'});
+                $scope.M.selUser = $scope.users[$scope.users.length - 1];
             };
 
             //Wczytuje userów systemu z bazy przez kontroler serwera
@@ -28,33 +30,61 @@ angular.module('myApp.controllers').controller('masterCtrl',
                     url: $rootScope.M.rootUrl + '/users',
                     method: 'GET'
                 }).success(function (data) {
-                    $scope.usersList = data;
+                    $scope.users = data;
                 });
             };
 
             //Dodaje usera do systemu; przykład metody POST z jsonem w body
-            $scope.addUser = function () {
-                //addUser(M.newuser)
-                var userToSave = $scope.M.newUser;
+            $scope.upsertUser = function (user) {
+                if (user.userid=='') insertUser(user);
+                else updateUser(user);
+            };
 
+            $scope.deleteUser = function (u) {
+                if (u.userid=='') return;
                 return $http({
-                    url: $rootScope.M.rootUrl + '/users',
+                    url: url + '/users/' + u.userid,
+                    method: 'DELETE'
+                }).success(function (data) {
+                    $scope.loadUsers();
+                });
+            };
+
+            $scope.saveAllUsers = function () {
+                $scope.users.forEach(function (u) {
+                    updateUser(u);
+                });
+            };
+
+
+            ///////////////////////////////////////////
+
+            var insertUser = function (u) {
+                return $http({
+                    url: url + '/users',
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
-                    data: JSON.stringify(userToSave)
+                    data: JSON.stringify(u)
                 }).success(function (data) {
-                    console.log("OK");
+                    $scope.loadUsers();
                 });
-
-                //Przykład wysyłania obiektów w polu `params`
-                // return $http({
-                //     url: $rootScope.M.rootUrl + '/users',
-                //     method: 'POST',
-                //     params: userToSave
-                // }).success(function(data){
-                //     console.log("OK");
-                // });
             };
+
+            var updateUser = function (u) {
+                return $http({
+                    url: url + '/users/' + u.userid,
+                    method: 'PUT',
+                    headers: {'Content-Type': 'application/json'},
+                    data: JSON.stringify(u)
+                }).success(function (data) {
+                    $scope.loadUsers();
+                });
+            };
+
+
+
+            //Akcje do wykonania przy włączaniu widoku
+            $scope.loadUsers();
         }
     ]
 );

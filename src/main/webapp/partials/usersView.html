@@ -7,93 +7,51 @@
 
     <div class="panel-body" >
       <!--Kolejny podział-->
-      <div class="col-sm-12 boxed">
+      <div class="col-sm-12 ">
 
         <table class="table table-striped table-condensed" >
           <thead>
           <tr>
-            <td class="col-sm-2">Id</td>
-            <td class="col-sm-10">Nazwa</td>
+            <td class="col-sm-2">UserId</td>
+            <td class="col-sm-8">UserName</td>
+            <td class="col-sm-2">
+              <span ng-if="!M.uU" class="glyphicon glyphicon-lock text-danger" ng-click="M.uU=true"></span>
+              <span ng-if="M.uU" class="glyphicon glyphicon-floppy-disk text-info" ng-click="saveAllUsers()"></span>
+              <span class="glyphicon glyphicon-refresh text-info" ng-click="loadUsers()"></span>
+            </td>
           </tr>
           </thead>
 
           <tbody>
           <tr class="clickable"
-              ng-repeat="user in usersList"
-              ng-click="M.selRez=(user?user:{})"
+              ng-repeat="u in users"
+              ng-click="M.selUser = (u ? u : {})"
           >
-            <td> {{user.userid}} </td>
-            <td> {{user.username}}</td>
+            <td> {{u.userid}} </td>
+            <td>
+              <input ng-if="u==M.selUser" ng-model="u.username">
+              <span ng-if="u!=M.selUser"> {{u.username}} </span>
+            </td>
+            <td>
+              <!-- delete, save -->
+              <div ng-if="M.uU">
+                <span class="glyphicon glyphicon-floppy-disk text-info" ng-click="upsertUser(u)"></span>
+                <span class="glyphicon glyphicon-trash text-info" ng-click="deleteUser(u)"></span>
+              </div>
+            </td>
           </tr>
           </tbody>
         </table>
-        <p>
-          Selected: {{M.selRez}}
-        </p>
-        <p>
-          firstLoad: {{M.firstLoad}}
-        </p>
-        <p>
-          Users: {{usersList}} <br>
-          <button class="btn btn-primary" ng-click="loadUsers()">Wczytaj userów</button>
 
+        <p class="clickable" ng-click="addEmptyUser()">
+          <span class="glyphicon glyphicon-plus text-info"></span>
         </p>
 
-        <p ng-class="(MMM.showNewBooking?'text-default':'text-success')">
-          <b> Dziwny ważny tekst </b>
-          <span class="glyphicon"
-                ng-class="(MMM.showNewBooking?'glyphicon-ok text-success':
-                                'glyphicon-remove text-danger')"></span>
-        </p>
 
-        <!--###################################-->
-        <p class="text-left clickable"
-           ng-click="MMM.showNewBooking = !MMM.showNewBooking"
-           title="Nowy egzamin">
-          <span class="glyphicon glyphicon-certificate text-info"></span>
-          Nowa rezerwacja
-        </p>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="panel panel-primary" ng-if="MMM.showNewBooking">
-    <h3 class="panel-heading panel-title"> Nowa rezerwacja  </h3>
-
-    <div class="panel-body">
-      Id: <input ng-model="nowa.id"/><br>
-      Nazwa: <input ng-model="nowa.nazwa"/>
-    </div>
-    <button class="btn btn-primary" ng-click="dodajRezerwacje(nowa)">Dodaj rezerwacje</button>
-  </div>
-</div>
-
-
-<!-- Szczegóły usera -->
-<div class="col-sm-7">
-
-
-  <div class="panel panel-primary" >
-
-    <h3 class="panel-heading panel-title">
-      Dodawanie userów
-    </h3>
-
-    <div class="panel-body" >
-      <div class="boxed">
-
-        <form class="form-inline  ">
-          <div class="form-group">
-            Nazwa nowego usera:
-            <input class="form-control wide-input" ng-model="M.newuser.username">
-          </div>
-        </form>
-
-        <button class="btn btn-primary" ng-click="addUser()">Dodaj usera</button>
 
       </div>
     </div>
   </div>
-
 </div>
+
+
