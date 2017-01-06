@@ -1,8 +1,6 @@
 package exceptions;
 
 
-import java.sql.SQLException;
-
 class WsizException extends RuntimeException {
 
 }
