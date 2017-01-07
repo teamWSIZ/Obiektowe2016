@@ -1,8 +1,10 @@
 package objective_tools;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.*;
 
 class Baza {
     Map<Integer,String> dane;  //good: dependencja na interfejs nie implementacje
@@ -11,7 +13,7 @@ class Baza {
 
 //chcemy mape ktora nie pozwala wrzucic wiecej niz 1000 elementow,
 //a fakty zapisu audytuje do pliku (loga admina)
-class FiniteSizeAuditedMap extends HashMap<Integer,String> {
+class FiniteSizeMap extends HashMap<Integer,String> {
 
     @Override
     public String put(Integer key, String value) {
@@ -28,6 +30,49 @@ class FiniteSizeAuditedMap extends HashMap<Integer,String> {
         return res;
     }
 }
+
+class AuditingMap extends HashMap<Integer,String> {
+    String logFileName = "fun_system.log";
+
+    private void writeToLog(String reason) {
+        try {
+            PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(logFileName, true)));
+            out.println("[" + new Date() + "] " + reason);
+            out.close();
+        } catch (IOException e) {
+            //exception handling left as an exercise for the reader
+            System.out.println(e);
+        }
+    }
+
+    @Override
+    public String put(Integer key, String value) {
+        String result =  super.put(key, value);
+        writeToLog(" Inserted at [" + key + "] value [" + value + "]");
+        return result;
+    }
+
+    @Override
+    public void putAll(Map<? extends Integer, ? extends String> m) {
+        throw new RuntimeException("Operation not implemented");
+    }
+
+    @Override
+    public void clear() {
+        super.clear();
+        writeToLog("Map cleared");
+    }
+
+    @Override
+    public boolean remove(Object key, Object value) {
+        boolean success =  super.remove(key, value);
+        writeToLog("Removed at [" + key + "]  value [" + value + "]");
+        return success;
+    }
+
+
+}
+
 
 
 interface DAO {
@@ -74,11 +119,31 @@ class DAOImpl implements DAO {
 
 
 public class Start {
+
+    private static void writeIt() {
+
+    }
+
+
     public static void main(String[] args) {
-        Map<Integer, String> m = new FiniteSizeAuditedMap();
-        m.put(1, "aa");
-        m.put(2, "bb");
-        m.put(5, "cc");
-        m.put(10, "dd");
+//        long st = System.currentTimeMillis();
+
+//        Map<Integer, String> m = new FiniteSizeMap();
+//        m.put(1, "aa");
+//        m.put(2, "bb");
+//        m.put(5, "cc");
+//        m.put(10, "dd");
+//
+//        long end = System.currentTimeMillis();
+//
+//        System.out.println((end-st) + " [ms]");
+//        writeIt();
+
+        AuditingMap map = new AuditingMap();
+        map.put(12, "aa");
+        map.put(13, "bb");
+        map.clear();
+        
+
     }
 }
