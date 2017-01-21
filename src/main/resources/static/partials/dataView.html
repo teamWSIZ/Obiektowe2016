@@ -41,15 +41,15 @@
                 <thead>
                 <tr>
                     <td class="col-sm-1"> Id</td>
-                    <td class="col-sm-3"> Title</td>
-                    <td class="col-sm-8"> Body</td>
+                    <td class="col-sm-3"> Author</td>
+                    <td class="col-sm-8"> Title</td>
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="item in M.appItems | filter:fff">
-                    <td> {{item.id}}</td>
-                    <td> {{item.title}}</td>
-                    <td> {{item.body.substring(0,40)}}</td>
+                <tr ng-repeat="item in M.books | filter:fff">
+                    <td> {{item.bookid}}</td>
+                    <td> {{item.author}}</td>
+                    <td> {{item.title.substring(0,50)}}</td>
                 </tr>
                 </tbody>
             </table>

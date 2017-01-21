@@ -41,7 +41,6 @@ angular.module('myApp.controllers').controller('masterCtrl',
                     method: 'GET',
                     headers: {'Content-Type': 'application/json'}
                 }).success(function(data){
-                    alert('List of books loaded' + data);
                     $scope.M.books = data;
                 });
             };
@@ -58,8 +57,8 @@ angular.module('myApp.controllers').controller('masterCtrl',
             };
 
             //functions executed on loading the view
-            $scope.loadArray();
-            $scope.cleanItem();
+            $scope.getBooks();
+            // $scope.cleanItem();
 
         }
     ]
