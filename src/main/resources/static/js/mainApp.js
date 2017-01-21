@@ -25,7 +25,7 @@ app.run(function ($rootScope) {
 
     $rootScope.M = {};
     //Global properties
-    $rootScope.M.URL = 'https://localhost:8443';
+    $rootScope.M.URL = 'http://localhost:8081';
 
     // Globalnie-dostępna tablica i referencja do jednego z jej elementów (M.selStud)
     $rootScope.users = [

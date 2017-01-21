@@ -10,6 +10,7 @@ angular.module('myApp.controllers').controller('masterCtrl',
             //Lokalny obiekt modelu, tworzony przy każdym uruchomieniu kontrolera
             $scope.M = {};
             $scope.M.appItems = [];
+            $scope.M.books = [];
             $scope.newItem = {};
             $scope.fff = '';
 
@@ -33,6 +34,18 @@ angular.module('myApp.controllers').controller('masterCtrl',
                     $scope.newItem = null;
                 });
             };
+
+            $scope.getBooks = function() {
+                return $http({
+                    url: $rootScope.M.URL + '/books',
+                    method: 'GET',
+                    headers: {'Content-Type': 'application/json'}
+                }).success(function(data){
+                    alert('List of books loaded' + data);
+                    $scope.M.books = data;
+                });
+            };
+
 
             $scope.loadArray = function () {
                 $http.get($rootScope.M.URL + '/items')
