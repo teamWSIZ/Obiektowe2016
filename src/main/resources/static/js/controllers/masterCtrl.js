@@ -59,6 +59,8 @@ angular.module('myApp.controllers').controller('masterCtrl',
             //functions executed on loading the view
             $scope.getBooks();
             // $scope.cleanItem();
+            //todo: ściągnąć listę userów, break-ów, places...
+            
 
         }
     ]

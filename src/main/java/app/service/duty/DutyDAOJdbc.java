@@ -4,6 +4,7 @@ import app.model.Duty;
 import app.service.JdbcTemplateFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.util.Date;
 import java.util.List;
 
 public class DutyDAOJdbc implements DutyDao {
@@ -16,11 +17,20 @@ public class DutyDAOJdbc implements DutyDao {
         return template.query("select * from duty", new DutyMapper());
     }
 
+
+
     @Override
     public Duty findById(Integer dutyId) {
         return template.queryForObject(
                 "select * from duty where dutyid=(?)",
                 new Object[]{dutyId}, new DutyMapper());
+    }
+
+    //todo: to ma działać!
+    @Override
+    public List<Duty> findByDate(Date date) {
+        return template.queryForList("select * from duty where date=(?)",
+                new Object[]{date}, new DutyMapper());
     }
 
     @Override

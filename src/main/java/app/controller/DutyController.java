@@ -5,6 +5,7 @@ import app.service.duty.DutyDAOJdbc;
 import app.service.duty.DutyDao;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.util.List;
 
 @CrossOrigin
@@ -15,7 +16,15 @@ public class DutyController {
     public DutyController() { dutyDao = new DutyDAOJdbc(); }
 
     @RequestMapping(value = "/duties", method = RequestMethod.GET)
-    public List<Duty> allDuties() { return dutyDao.findAll(); }
+    public List<Duty> allDuties(
+            @RequestParam( value = "date", defaultValue = "") String date
+    ) {
+        if ("".equals(date)) {
+            return dutyDao.findAll();
+        } else {
+            return dutyDao.findByDate(Date.valueOf(date));
+        }
+    }
 
     @RequestMapping(value = "/duties/{dutyId}", method = RequestMethod.GET)
     public Duty getDutyInfo(@PathVariable Integer dutyId) {

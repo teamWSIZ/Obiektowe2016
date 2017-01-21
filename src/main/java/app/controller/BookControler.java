@@ -46,6 +46,7 @@ public class BookControler {
     ) {
         bookDAO.insertNew(new Book(0,title,author));
     }
+
     @RequestMapping(value = "/books/{bookid}", method = RequestMethod.DELETE)
     public void deleteBook(@PathVariable Integer bookid) {
         bookDAO.delete(bookid);
