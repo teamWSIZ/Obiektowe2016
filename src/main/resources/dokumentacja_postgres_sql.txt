@@ -1,0 +1,14 @@
+####
+Możliwości:
+
+1) serwer bazy danych na WSIZ
+2) lokalna VM (CentOS) z instalacją postgresa
+3) bezpośrednia instalacja na PC developera
+
+
+(1) Kroki instalacji PG na serwerze Centos7
+
+
+(2) VirtualBox; zainstalować linux CentOS (....)
+
+(3) https://www.postgresql.org/download/windows/
