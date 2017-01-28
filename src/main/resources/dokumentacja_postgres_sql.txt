@@ -20,3 +20,26 @@ Możliwości:
 
 ------------------------------------
 Baza postgres9.4 na 10.10.22.255; user student; baza student; password ....; port 5432
+
+
+
+Dane do bazy muszą być trzymane w pliku, który jest ignorowany przez githuba (określone w .gitignore).
+Każdy musi sobie stworzyć ten plik (klasę) i wprowadzić w niej hasło. Poniżej kod klasy:
+
+    // START
+
+        package app.service;
+
+        import lombok.Data;
+
+        /**
+         * FILE EXCLUDED FROM GIT
+         * Created by User on 28.01.2017.
+         */
+        @Data
+        public class Config {
+            String db_password = "TUTAJ WPISAC HASLO";
+        }
+
+
+    // END

@@ -1,3 +1,4 @@
+-- H2 CREATE DATABASE
 -- noinspection SqlNoDataSourceInspectionForFile
 create table book(
   bookid int auto_increment,

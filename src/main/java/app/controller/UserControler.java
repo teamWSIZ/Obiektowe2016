@@ -24,7 +24,7 @@ public class UserControler {
 
     @RequestMapping(value = "/users", method = RequestMethod.POST)
     public void createUser(@RequestBody User user){
-        userDAO.insertNew(new User(0,user.getUsername()));
+        userDAO.insertNew(new User(0, user.getUsername()));
     }
 
     @RequestMapping(value = "/users/{userid}", method = RequestMethod.PUT)

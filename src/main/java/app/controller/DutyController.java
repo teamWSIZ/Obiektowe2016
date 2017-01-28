@@ -21,9 +21,11 @@ public class DutyController {
     ) {
         if ("".equals(date)) {
             return dutyDao.findAll();
-        } else {
-            return dutyDao.findByDate(Date.valueOf(date));
         }
+//        else {
+//            return dutyDao.findByDate(Date.valueOf(date));
+//        }
+        return null;
     }
 
     @RequestMapping(value = "/duties/{dutyId}", method = RequestMethod.GET)

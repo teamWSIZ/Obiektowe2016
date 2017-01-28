@@ -23,8 +23,8 @@ app.controller("users", function($scope, $http) {
     }
 
     $scope.addUser = function () {
-        $http.post(url+"users/add", {
-            name: $scope.addUserName
+        $http.post(url+"users", {
+            username: $scope.addUserName
         }).then(function(response){
             $scope.addUserName = '';
             $('#addUserModal').modal('hide');

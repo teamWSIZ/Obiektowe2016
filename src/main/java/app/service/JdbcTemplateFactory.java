@@ -14,11 +14,14 @@ public class JdbcTemplateFactory {
 
     public static JdbcTemplate getTemplate() {
         if (template==null) {
+
+            Config cfg = new Config();
+
             DriverManagerDataSource dataSource =
                     new DriverManagerDataSource(
-                    "jdbc:h2:tcp://localhost/~/nowabaza",
-                    "sa",
-                    ""
+                    "jdbc:postgresql://10.10.22.255:5432/student",
+                    "student",
+                    cfg.getDb_password()
             );
             template = new JdbcTemplate(dataSource);
         }

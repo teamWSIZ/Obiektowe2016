@@ -27,11 +27,11 @@ public class DutyDAOJdbc implements DutyDao {
     }
 
     //todo: to ma działać!
-    @Override
-    public List<Duty> findByDate(Date date) {
-        return template.queryForList("select * from duty where date=(?)",
-                new Object[]{date}, new DutyMapper());
-    }
+//    @Override
+//    public List<Duty> findByDate(Date date) {
+//        return template.queryForList("select * from duty where date=(?)",
+//                new Object[]{date}, new DutyMapper());
+//    }
 
     @Override
     public void inserNew(Duty d) {
