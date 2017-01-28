@@ -12,8 +12,11 @@ Możliwości:
  (instalować zgodnie z instrukcją na tinyurl.com/linux-wsiz)
  https://docs.google.com/document/d/1jnDbBXBUbDHnk1vmpCkPgsFInnOzF-RY34xIEp8K1V8/pub#id.e1yh7wyvhryj
 
- 
+
 
 (2) VirtualBox; zainstalować linux CentOS (....)
 
 (3) https://www.postgresql.org/download/windows/
+
+------------------------------------
+Baza postgres9.4 na 10.10.22.255; user student; baza student; password ....; port 5432
