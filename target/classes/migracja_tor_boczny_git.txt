@@ -1,0 +1,26 @@
+# Przesunięcie branch master do bez-jdbc
+# Wyczyszczenie branch jdbctemplate
+# Z-merge-owanie jdbctemplate do master (na github)
+
+git fetch
+git status	#nie bylo zmian
+
+git checkout master
+git checkout -b bez-jdbc
+
+#dopisanie pliku readme.txt
+git add -A
+git commit -m "opis"
+git push     #nie udaje się, bo to nowy branch, ale sugeruje jak to zrobic
+git push --set-upstream origin bez-jdbc
+
+git checkout jdbctemplate
+#edycja i czyszczenie projektu ze staroci
+git add -A
+git commit -m "czyszczenie"
+git push
+#na githubie, przejść na branch jdbctemplate
+#zrobić "pull request" do branch master
+#zatwierdzić merge
+
+

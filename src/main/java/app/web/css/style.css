@@ -1,0 +1,121 @@
+body {
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    text-align: center;
+    justify-content: center;
+    color: #4c4c4c;
+    overflow: auto;
+    width: 100%;
+}
+
+.main {
+    width: 100%;
+    /*padding: 50px;*/
+    /*display: flex;*/
+    justify-content: center;
+    /*background-color: green;*/
+}
+
+.lewy {
+    /*background-color: yellow;*/
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.prawy {
+    /*background-color: red;*/
+    /*display: flex;*/
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.form-control:focus {
+  border-color: #e0e0e0;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(88, 88, 88, 0.6);
+}
+
+.footer {
+    font-family: 'Dancing Script', cursive;
+    font-size: 18px;
+    padding: 25px;
+    color: #fff;
+    background-color: #4c4c4c;
+}
+
+.footer > p {
+    margin-bottom: 0px;
+}
+
+.header-fixed {
+    width: 80%;
+}
+
+.pure-table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    empty-cells: show;
+    border: 1px solid #cbcbcb;
+}
+
+.pure-table td,
+.pure-table th {
+    border-left: 1px solid #cbcbcb;/*  inner column border */
+    border-width: 0 0 0 1px;
+    font-size: inherit;
+    margin: 0;
+    overflow: visible; /*to make ths where the title is really long work*/
+    padding: 4px 12px; /* cell padding */
+    text-align: center;
+    color: #4c4c4c;
+}
+.pure-table td:first-child,
+.pure-table th:first-child {
+    border-left-width: 0;
+}
+
+.pure-table thead {
+    background: #e0e0e0;
+    color: #000;
+    vertical-align: bottom;
+}
+
+.pure-table td {
+    background-color: transparent;
+}
+
+.btn-moj {
+    background-color: #fff;
+    color: #4c4c4c;
+    float: right;
+    font-family: ;
+}
+
+.btn-moj:hover {
+    color: #e0e0e0;
+}
+
+.btn-moj:visited, .btn-moj:active, .btn-moj:focus {
+    color: #4c4c4c;
+}
+
+.btn-primary:hover {
+    background-color: #4c4c4c;
+    border-color: #4c4c4c;
+}
+
+
+.modal-content > .modal-body {
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    padding: 20px;
+}
+
+.modal-body > .form-group {
+    padding: 15px;
+}
+
+.form-control {
+    font-family: 'Raleway', sans-serif;
+}

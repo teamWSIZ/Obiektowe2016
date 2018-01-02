@@ -1,0 +1,62 @@
+<div class="col-sm-3">
+    <div class="panel panel-primary" >
+
+        <h3 class="panel-heading panel-title">
+            Load/Send data
+        </h3>
+
+        <div class="panel-body" >
+            <div style="margin-bottom: 20px" class="debug" >
+                <input ng-model="newItem.title" class="iinput narrow8" placeholder="Title">
+                <input ng-model="newItem.body" class="iinput narrow8" placeholder="Body">
+            </div>
+
+            <div class="debug">
+                <button class="btn btn-primary" ng-click="loadArray()">Load data</button>
+                <button class="btn btn-default" ng-click="sendNewItem()">Send data</button>
+            </div>
+
+
+        </div>
+
+        <div class="panel-footer">
+
+        </div>
+    </div>
+</div>
+
+<div class="col-sm-9">
+
+    <div class="panel panel-primary" >
+
+        <h3 class="panel-heading panel-title">
+            View of items
+        </h3>
+
+        <div class="panel-body" >
+            <p>The following items are available: </p>
+            <input ng-model="fff" placeholder="Filter..." class="iinput narrow-free2">
+
+            <table class="table table-bordered table-responsive table-condensed table-striped">
+                <thead>
+                <tr>
+                    <td class="col-sm-1"> Id</td>
+                    <td class="col-sm-3"> Title</td>
+                    <td class="col-sm-8"> Body</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in M.appItems | filter:fff">
+                    <td> {{item.id}}</td>
+                    <td> {{item.title}}</td>
+                    <td> {{item.body.substring(0,40)}}</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <div class="panel-footer">
+            Footer
+        </div>
+    </div>
+</div>

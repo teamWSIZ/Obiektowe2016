@@ -1,0 +1,36 @@
+
+#Tworzenie tabel
+
+create table abc(
+  id int auto_increment,
+  nazwa text
+)
+
+
+
+#Dodawanie danych
+insert into abc(nazwa) values ('Abra');
+
+
+
+#Odpytywanie bazy o dane
+
+select * from abc
+
+#Kasowanie z tabeli
+delete from book
+#z warunkiem:
+delete from book where title='Ferdydurke'
+
+
+#Update rekordu, ustwienie tytułu na Ferdy dla rekordu o bookid=34
+update book set author='Gom', title='Fer' where bookid=34;
+
+-------------
+#Modyfikacje bazy:
+#Zmiana nazwy kolumny:
+alter table abc alter column oldname rename to newname
+
+
+
+
